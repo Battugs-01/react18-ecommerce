@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
-function Product(props) {
-  const product = props?.product || [];
+import { Link } from "react-router-dom";
+
+export default function Product(props) {
+  const product = props.product;
 
   return (
     <div className="col-lg-4">
@@ -10,7 +12,9 @@ function Product(props) {
             <ul>
               <li>
                 <a href="single-product.html">
-                  <i className="fa fa-eye"></i>
+                  <Link to={"/product/" + product.id}>
+                    <i className="fa fa-eye"></i>
+                  </Link>
                 </a>
               </li>
               <li>
@@ -28,10 +32,9 @@ function Product(props) {
           <img src={product.thumbnail} height={200} alt="" />
         </div>
         <div className="down-content">
-          <h4>{product?.title}</h4>
-          <span>${product?.price}</span>
+          <h4>{product.title}</h4>
+          <span>${product.price}</span>
           <ul className="stars">
-            c
             <li>
               <i className="fa fa-star"></i>
             </li>
@@ -53,5 +56,3 @@ function Product(props) {
     </div>
   );
 }
-
-export default Product;
