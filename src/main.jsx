@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./pages/index.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/about.jsx";
-import Product from "./Pages/Product.jsx";
+import Product from "./pages/Product.jsx";
 import Layout from "./components/Layout.jsx";
 
 // const router = createBrowserRouter([

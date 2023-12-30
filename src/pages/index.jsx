@@ -3,20 +3,28 @@ import '../assets/css/font-awesome.css';
 import '../assets/css/templatemo-hexashop.css';
 import '../assets/css/owl-carousel.css';
 import '../assets/css/lightbox.css';
-import { useEffect, useState } from 'react';
 import Product from '../components/Product';
+import useData from '../hooks/useData';
 
 function App() {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    fetch('https://dummyjson.com/products?limit=9')
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data.products);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://dummyjson.com/products?limit=9')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setProducts(data.products);
+  //     });
+  // }, []);
 
+  const {data , loading} = useData('https://dummyjson.com/products?limit=9' , {products : []});
+
+  if(loading) {
+    return <div>...</div>
+  }
+  
+  const products = data?.products
+  
   return (
     <>
       <div className='page-heading' id='top'>

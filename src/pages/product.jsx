@@ -1,24 +1,19 @@
 import { useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ApplicationContext } from "../components/Layout";
+import useData from "../hooks/useData";
 
 export default function Product() {
   const params = useParams();
-  const [product, setProduct] = useState(null);
+  // const [product, setProduct] = useState(null);
 
   const { basket, setBasket } = useContext(ApplicationContext);
 
+  const {data : product , loading} = useData("https://dummyjson.com/product/" + params.id , {product : []});
+
   console.log(basket, "basket");
 
-  useEffect(() => {
-    fetch("https://dummyjson.com/product/" + params.id)
-      .then((response) => response.json())
-      .then((data) => {
-        setProduct(data);
-      });
-  }, []);
-
-  if (!product) {
+  if (loading) {
     return <div>...</div>;
   }
 
