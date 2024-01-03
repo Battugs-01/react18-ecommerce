@@ -7,7 +7,7 @@ export default function Product() {
   const params = useParams();
   // const [product, setProduct] = useState(null);
 
-  const { basket, setBasket } = useContext(ApplicationContext);
+  const { basket, addToBasket } = useContext(ApplicationContext);
 
   const {data : product , loading} = useData("https://dummyjson.com/product/" + params.id , {product : []});
 
@@ -100,7 +100,7 @@ export default function Product() {
                   <div className="main-border-button">
                     <a
                       onClick={() => {
-                        setBasket([...basket, product]);
+                        addToBasket(product);
                       }}
                       href="#"
                     >
